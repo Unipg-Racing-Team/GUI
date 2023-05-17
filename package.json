@@ -41,9 +41,14 @@
     "init:qt5": "./venv-pywebview/bin/pip install pyqt5 pyqtwebengine -r requirements.txt",
     "init:gtk": "./venv-pywebview/bin/pip install pycairo PyGObject -r requirements.txt",
     "//init:gtk": "sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-3.0 && ./venv-pywebview/bin/pip install pycairo pygobject -r requirements.txt",
+    "init:docs": "./venv-pywebview/bin/pip install pylama yapf",
     "start": "export NODE_OPTIONS='--openssl-legacy-provider' && yarn run frontend:dev && run-script-os",
     "start:windows": ".\\venv-pywebview\\Scripts\\python src\\index.py",
-    "start:default": "./venv-pywebview/bin/python src/index.py"
+    "start:default": "./venv-pywebview/bin/python src/index.py",
+    
+    "pylintcheck": "pylama -f pylint ./src/",
+    "pylint":"yapf --recursive -i ./src/"
+    
   },
   "eslintConfig": {
     "extends": [
