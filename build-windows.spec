@@ -1,10 +1,20 @@
 # -*- mode: python -*-
+import json
+
+def load_configs():
+    json_data = ''
+    with open('package.json', 'r') as f:
+       json_data = json.loads(f.read())
+
+    return json_data
 
 block_cipher = None
 
 added_files = [
     ('.\\gui', 'gui'),
 ]
+
+configs = load_configs()
 
 a = Analysis(['.\\src\\index.py'],
              pathex=['.\\dist'],
@@ -19,7 +29,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
-          name='pywebview-react-app',
+          name=configs['name'],
           debug=False,
           strip=True,
           icon='.\\src\\assets\\logo.ico',
@@ -31,4 +41,4 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=False,
-               name='pywebview-react-app')
+               name=configs['name'])
