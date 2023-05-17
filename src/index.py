@@ -1,10 +1,15 @@
 import os
 import threading
 import webview
-
+import argparse
 from time import time
 from lib.serialhandler import SerialHandler, DataFrame, FormatData, FileHandler
 from lib.api import Api
+
+dataframe = None
+file_handler = None
+serial_handler = None
+args = None
 
 
 def get_entrypoint():
@@ -55,7 +60,31 @@ def update_ticker():
             'window.pywebview.state.setTicker("%d")' % time())
 
 
+@set_interval(.01)
+def get_data_from_serial():
+    raise NotImplementedError()
+
+
+def init_serial_connection():
+    global dataframe
+    global file_handler
+    global serial_handler
+
+    dataframe = DataFrame()
+    file_handler = FileHandler(dataframe)
+    serial_handler = SerialHandler(args.port, args.boudrate)
+
+
 if __name__ == '__main__':
+    global args
+
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('port', type=str, help='Serial Port path')
+    parser.add_argument('boudrate', type=int, help='Serial Port boudrate')
+
+    args = parser.parse_args()
+
+    init_serial_connection()
 
     window = webview.create_window('pywebview-react boilerplate',
                                    entry,
