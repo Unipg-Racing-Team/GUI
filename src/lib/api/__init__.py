@@ -5,10 +5,10 @@ class Api:
 
     def get_all_ports(self):
         ports = list_ports.comports()
-        res = ""
+        res = []
 
         for port in ports:
-            res += port.device
+            res.append(port.device)
 
         return res
 
