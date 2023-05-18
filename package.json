@@ -11,9 +11,13 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-d3-speedometer": "^1.1.0",
+    "react-dom": "^18.2.0",
+    "react-gauge-chart": "^0.4.1",
+    "react-google-charts": "^4.0.0",
     "react-scripts": "4.0.3",
+    "react-thermometer-component": "^1.0.1",
     "sass": "^1.43.4",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -45,10 +49,8 @@
     "start": "export NODE_OPTIONS='--openssl-legacy-provider' && yarn run frontend:dev && run-script-os",
     "start:windows": ".\\venv-pywebview\\Scripts\\python src\\index.py",
     "start:default": "./venv-pywebview/bin/python src/index.py",
-    
     "pylintcheck": "pylama -f pylint ./src/",
-    "pylint":"yapf --recursive -i ./src/"
-    
+    "pylint": "yapf --recursive -i ./src/"
   },
   "eslintConfig": {
     "extends": [
