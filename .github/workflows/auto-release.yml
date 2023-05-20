@@ -13,6 +13,9 @@ on:
     paths:
       - '**/RELEASE'
 
+permissions:
+  checks: write
+
 jobs:
   gh-release:
     runs-on: ubuntu-latest
