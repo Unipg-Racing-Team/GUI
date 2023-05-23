@@ -10,6 +10,7 @@ import Barometer from "./components/barometer";
 import Time from "./components/time";
 import "./index.css";
 
+// Sample incoming data
 const incoming = {
   date: 1597107474849,
   data: {
@@ -36,6 +37,7 @@ const incoming = {
 };
 
 const App = function () {
+  // State variables
   const [date, setDate] = useState(new Date());
   const [battery, setBattery] = useState(incoming.data.bat);
   const [baro, setBaro] = useState(incoming.data.baro);
@@ -52,13 +54,14 @@ const App = function () {
   const [temph, setTemph] = useState(incoming.data.temph);
   const [location, setLocation] = useState(incoming.data.location);
 
-  useEffect(() => {
-    const timerID = setInterval(() => tick(), 1000);
+  // useEffect(() => {
+  //   // Timer to update the date every second
+  //   const timerID = setInterval(() => tick(), 1000);
 
-    return () => {
-      clearInterval(timerID);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(timerID);
+  //   };
+  // }, []);
 
   const tick = () => {
     setDate(new Date());
@@ -67,42 +70,56 @@ const App = function () {
   return (
     <div className="App">
       <div className="dials">
+        
+        {/* Input for barometer */}
         barometer:
         <input
           type="text"
           value={baro}
           onChange={(e) => setBaro(e.target.value)}
         />
+        
+        {/* Input for lowest temperature */}
         lowestTemp:
         <input
           type="text"
           value={templ}
           onChange={(e) => setTempl(e.target.value)}
         />
+        
+        {/* Input for highest temperature */}
         highestTemp:
         <input
           type="text"
           value={temph}
           onChange={(e) => setTemph(e.target.value)}
         />
+        
+        {/* Input for speedX */}
         speedX:
         <input
           type="text"
           value={vgx}
           onChange={(e) => setVgx(e.target.value)}
         />
+        
+        {/* Input for speedY */}
         speedY:
         <input
           type="text"
           value={vgy}
           onChange={(e) => setVgy(e.target.value)}
         />
+        
+        {/* Input for accelerationX */}
         accelerationX:
         <input
           type="text"
           value={agx}
           onChange={(e) => setAgx(e.target.value)}
         />
+        
+        {/* Input for accelerationY */}
         accelerationY:
         <input
           type="text"
@@ -110,10 +127,14 @@ const App = function () {
           onChange={(e) => setAgy(e.target.value)}
         />
       </div>
+     
       <div className="title">Pilot Battery Energy </div>
+      {/* Battery component */}
       <Battery percentage={battery} />
       <p>Move slider to see battery level change</p>
       <div className="slidecontainer">
+        
+        {/* Slider for battery level */}
         <input
           type="range"
           min="1"
@@ -125,25 +146,37 @@ const App = function () {
           onChange={(e) => setBattery(e.target.value)}
         />
       </div>
+      
       <div className="dials">
+        {/* Time component */}
         <Time id="dial10" value="10" title="Total Flight Time" />
       </div>
+      
       <div className="dials">
+        {/* Barometer component */}
         <Barometer id="dial9" value={baro} title="Barometer" />
+      
+        {/* Temperature components */}
         <Temp id="dial7" value={templ} title="Lowest Temp" />
         <Temp id="dial8" value={temph} title="Highest Temp" />
       </div>
+      
       <div className="dials">
+        {/* Speedometer components */}
         <Speedometer id="dial5" value={agx} title="Acceleration X" />
         <Speedometer id="dial6" value={agy} title="Acceleration Y" />
       </div>
+      
       <div className="dials">
+        {/* Dial and AccelDial components */}
         <Dial id="dial1" value={vgx} title="Speed X" />
         <Dial id="dial2" value={vgy} title="Speed Y" />
         <AccelDial id="dial3" value={agx} title="Acceleration X" />
         <AccelDial id="dial4" value={agy} title="Acceleration Y" />
       </div>
+      
       <div className="dials">
+        {/* Display pitch, yaw, and roll */}
         <div>
           Pitch: {pitch} | Yaw: {yaw} | Roll: {roll}
         </div>
@@ -151,7 +184,6 @@ const App = function () {
     </div>
   );
 }
-
 
 ReactDOM.render(<App />, document.getElementById("app"));
 

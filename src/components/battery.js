@@ -1,5 +1,6 @@
 import GaugeBg from "../img/gauge-bg.png";
 
+// Constants for gauge dimensions and styles
 const gaugeWidth = 170;
 const gaugeHeight = 50;
 const gaugeContentWidth = gaugeWidth - 12;
@@ -8,8 +9,10 @@ const gaugeBarWidth = gaugeContentWidth / gaugeBarsNb;
 const gaugeBarMargin = 1;
 const gaugeBarRadius = 10;
 
+// Constant for low battery threshold
 const lowBattery = 25;
 
+// Styles for the Battery component
 const styles = {
   container: {
     position: "relative",
@@ -66,7 +69,9 @@ const styles = {
   }
 };
 
+// Battery component
 const Battery = ({ percentage }) => {
+  // Calculate the number of bars to display based on the percentage
   const percent10 = Math.round(percentage / gaugeBarsNb);
   const percentageArray = [...Array(percent10).keys()];
 

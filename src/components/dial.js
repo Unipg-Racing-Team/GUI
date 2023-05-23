@@ -2,6 +2,7 @@ import GaugeChart from "react-gauge-chart";
 
 const styles = {
   dial: {
+    // Styling for the dial component
     display: "inline-block",
     width: `300px`,
     height: `auto`,
@@ -10,16 +11,19 @@ const styles = {
     padding: "2px"
   },
   title: {
+    // Styling for the title component
     fontSize: "1em",
     color: "#000"
   }
 };
 
+// Dial component
 const Dial = ({ id, value, title }) => {
   let percent = value / 100;
 
   return (
     <div style={styles.dial}>
+      {/* GaugeChart component */}
       <GaugeChart
         id={id}
         nrOfLevels={30}
@@ -29,6 +33,7 @@ const Dial = ({ id, value, title }) => {
         textColor={"#000000"}
         formatTextValue={(value) => value}
       />
+      {/* Title */}
       <div style={styles.title}>{title}</div>
     </div>
   );

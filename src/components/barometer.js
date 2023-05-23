@@ -1,5 +1,6 @@
 import { Chart } from "react-google-charts";
 
+// Styles for the Barometer component
 const styles = {
   dial: {
     width: `auto`,
@@ -14,6 +15,7 @@ const styles = {
   }
 };
 
+// Barometer component
 const Barometer = ({ id, value, title }) => {
   return (
     <div style={styles.dial}>

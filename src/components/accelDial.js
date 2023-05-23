@@ -1,5 +1,6 @@
 import GaugeChart from "react-gauge-chart";
 
+// Styles for the AccelDial component
 const styles = {
   dial: {
     display: "inline-block",
@@ -15,6 +16,7 @@ const styles = {
   }
 };
 
+// AccelDial component
 const AccelDial = ({ id, value, title }) => {
   let percent = value / 100;
   // value: "-50" -> percent: 0
