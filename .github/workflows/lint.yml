@@ -31,8 +31,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8
 
+      # fix temporaneo. @Fabrizio ricontrollare configurazione di eslint
       - name: Install Node.js dependencies
-        run: npm ci
+        run: yarn install && yarn add eslint && yarn add --dev eslint-config-react-app
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
