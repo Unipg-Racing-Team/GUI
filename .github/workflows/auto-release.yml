@@ -60,5 +60,4 @@ jobs:
           automatic_release_tag: "${{ github.event.pull_request.title }}"
           prerelease: false
           files: |
-            releasebuild
-            releasebuild.*
+            react-pywebview-boilerplate
