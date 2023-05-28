@@ -58,5 +58,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            devbuild
-            devbuild.*
+            react-pywebview-boilerplate
