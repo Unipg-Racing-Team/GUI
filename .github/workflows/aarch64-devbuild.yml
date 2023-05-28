@@ -33,6 +33,7 @@ jobs:
               sudo apt install nodejs -y
               npm install --global yarn
               yarn run init
+              export CI=false
               yarn run build
       - name: Upload executable
         uses: actions/upload-artifact@v3
