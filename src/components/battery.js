@@ -1,4 +1,4 @@
-import GaugeBg from "../img/gauge-bg.png";
+import GaugeBg from "../assets/img/gauge-bg.png";
 
 // Constants for gauge dimensions and styles
 const gaugeWidth = 170;
