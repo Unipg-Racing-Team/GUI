@@ -6,10 +6,10 @@ from time import time
 from lib.serialhandler import SerialHandler, DataFrame, FormatData, FileHandler
 from lib.api import Api
 
-dataframe = None
-file_handler = None
-serial_handler = None
-args = None
+global dataframe
+global file_handler
+global serial_handler
+global args
 
 
 def get_entrypoint():
@@ -75,18 +75,26 @@ def init_serial_connection():
     serial_handler = SerialHandler(args.port, args.boudrate)
 
 
-if __name__ == '__main__':
-    global args
-
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('port', type=str, help='Serial Port path')
-    parser.add_argument('boudrate', type=int, help='Serial Port boudrate')
-
-    args = parser.parse_args()
-
+def main():
     init_serial_connection()
 
     window = webview.create_window('pywebview-react boilerplate',
                                    entry,
                                    js_api=Api())
     webview.start(update_ticker, debug=True)
+
+
+if __name__ == '__main__':
+    global args
+
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('port', type=str, help='Serial Port path')
+    parser.add_argument('-b',
+                        '--boudrate',
+                        type=int,
+                        help='Serial Port boudrate',
+                        default=115200)
+
+    args = parser.parse_args()
+
+    main()

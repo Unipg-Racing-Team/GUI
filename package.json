@@ -44,7 +44,7 @@
     "init:docs": "./venv-pywebview/bin/pip install pylama yapf",
     "start": "export NODE_OPTIONS='--openssl-legacy-provider' && yarn run frontend:dev && run-script-os",
     "start:windows": ".\\venv-pywebview\\Scripts\\python src\\index.py",
-    "start:default": "./venv-pywebview/bin/python src/index.py",
+    "start:default": "./venv-pywebview/bin/python src/index.py '/dev/ttyS0'",
     
     "pylintcheck": "pylama -f pylint ./src/",
     "pylint":"yapf --recursive -i ./src/"
