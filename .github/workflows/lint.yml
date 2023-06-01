@@ -38,8 +38,5 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
-          eslint: true
-          eslint_dir: src/
-          eslint_extensions: js,jsx
-          eslint_args: "--no-error-on-unmatched-pattern"
+          x0: true
           flake8: true

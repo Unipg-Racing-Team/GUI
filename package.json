@@ -52,70 +52,9 @@
     "pylint": "yapf --recursive -i ./src/",
     "lint": "eslint \"src/**\""
   },
-  "eslintConfig": {
-		  "root": true,
-      "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-      ],
-      "plugins": [
-        "react"
-      ],
-      "env": {
-          "browser": true,
-          "es2021": true,
-          "node": true
-      },
-      "plugins": [
-          "react"
-      ],
-      "parserOptions": {
-          "ecmaVersion": "latest",
-          "sourceType": "module"
-      },
-		  "settings": {
-        "react": {
-            "version": "detect"
-        },
-			  "jsdoc": {
-				  "mode": "typescript"
-			  }
-		  },
-		  "rules": {
-			  "no-await-in-loop": "off",
-			  "no-unused-vars": [
-				  "error",
-				  {
-					  "args": "none",
-					  "varsIgnorePattern": "^_"
-				  }
-			  ],
-			  "jsdoc/check-indentation": "error",
-			  "jsdoc/check-syntax": "error",
-			  "jsdoc/newline-after-description": [
-				  "error",
-				  "never"
-			  ],
-			  "jsdoc/require-description": "error",
-			  "jsdoc/require-hyphen-before-param-description": "error",
-			  "jsdoc/require-jsdoc": "off"
-		  }
-	  },
-	"eslintIgnore": [
-		"node_modules/",
-		"oldtmp/",
-		"gui/",
-		"build/",
-		"public/",
-		"dist/",
-		"src/assets/",
-		"src/lib/",
-		"src/styles/",
-		"venv-pywebview/",
-		"*.png",
-		"*.py",
-		"*.sass"
-	],
+  "xo": {
+    "extends": "xo-react"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -130,10 +69,13 @@
   },
   "devDependencies": {
     "eslint-config-standard": "^17.1.0",
+    "eslint-config-xo-react": "^0.27.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
-    "run-script-os": "^1.1.6"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "run-script-os": "^1.1.6",
+    "xo": "^0.54.2"
   }
 }
