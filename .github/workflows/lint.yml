@@ -40,5 +40,6 @@ jobs:
         with:
           eslint: true
           eslint_dir: src/
+          eslint_extentions: js,jsx
           eslint_args: "--no-error-on-unmatched-pattern"
           flake8: true
