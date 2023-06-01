@@ -53,11 +53,56 @@
     "lint": "eslint \"src/**\""
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+		  "root": true,
+      "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+      ],
+      "env": {
+          "browser": true,
+          "es2021": true,
+          "node": true
+      },
+		  "settings": {
+			  "jsdoc": {
+				  "mode": "typescript"
+			  }
+		  },
+		  "rules": {
+			  "no-await-in-loop": "off",
+			  "no-unused-vars": [
+				  "error",
+				  {
+					  "args": "none",
+					  "varsIgnorePattern": "^_"
+				  }
+			  ],
+			  "jsdoc/check-indentation": "error",
+			  "jsdoc/check-syntax": "error",
+			  "jsdoc/newline-after-description": [
+				  "error",
+				  "never"
+			  ],
+			  "jsdoc/require-description": "error",
+			  "jsdoc/require-hyphen-before-param-description": "error",
+			  "jsdoc/require-jsdoc": "off"
+		  }
+	  },
+	"eslintIgnore": [
+		"node_modules/",
+		"oldtmp/",
+		"gui/",
+		"build/",
+		"public/",
+		"dist/",
+		"src/assets/",
+		"src/lib/",
+		"src/styles/",
+		"venv-pywebview/",
+		"*.png",
+		"*.py",
+		"*.sass"
+	],
   "browserslist": {
     "production": [
       ">0.2%",
