@@ -26,7 +26,9 @@ jobs:
         with:
           copy_artifact_path: dist/react-pywebview-boilerplate
           copy_artifact_dest: .
-          base_image: raspios_lite_arm64:latest
+          base_image: raspios_lite:latest
+          cpu: cortex-a7
+          cpu_info: cpuinfo/raspberrypi_3b
           image_additional_mb: 4096
           commands: |
               sudo apt update
