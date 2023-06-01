@@ -33,7 +33,7 @@ jobs:
 
       # fix temporaneo. @Fabrizio ricontrollare configurazione di eslint
       - name: Install Node.js dependencies
-        run: yarn install && yarn add eslint && yarn add --dev eslint-config-react-app
+        run: yarn install
 
       - name: Run linters
         uses: wearerequired/lint-action@v2

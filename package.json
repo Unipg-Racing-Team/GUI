@@ -48,7 +48,8 @@
     "start:windows": ".\\venv-pywebview\\Scripts\\python src\\index.py",
     "start:default": "./venv-pywebview/bin/python src/index.py",
     "pylintcheck": "pylama -f pylint ./src/",
-    "pylint": "yapf --recursive -i ./src/"
+    "pylint": "yapf --recursive -i ./src/",
+    "lint": "eslint \"src/**\""
   },
   "eslintConfig": {
     "extends": [
@@ -69,6 +70,11 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.32.2",
     "run-script-os": "^1.1.6"
   }
 }
