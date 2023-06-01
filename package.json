@@ -50,7 +50,7 @@
     "start:default": "./venv-pywebview/bin/python src/index.py",
     "pylintcheck": "pylama -f pylint ./src/",
     "pylint": "yapf --recursive -i ./src/",
-    "lint": "eslint \"src/**\""
+    "lint": "xo src/"
   },
   "xo": {
     "extends": "xo-react"
