@@ -1,0 +1,65 @@
+name: Create Release
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+permissions:
+  id-token: write
+  contents: write
+  packages: write
+  pull-requests: read
+
+jobs:
+  build:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Build on ARM
+        uses: pguyot/arm-runner-action@v2
+        id: build_image
+        with:
+          copy_artifact_path: dist/react-pywebview-boilerplate
+          copy_artifact_dest: .
+          base_image: raspios_lite:latest
+          cpu: cortex-a7
+          cpu_info: cpuinfo/raspberrypi_3b
+          image_additional_mb: 4096
+          commands: |
+              sudo apt update
+              sudo apt install python3-pip -y
+              pip3 install virtualenv
+              curl -sL https://deb.nodesource.com/setup_18.x | sudo bash -
+              sudo apt install nodejs -y
+              npm install --global yarn
+              yarn run init
+              yarn run build
+      - name: Upload executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: releasebuild
+          path: react-pywebview-boilerplate
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Download Executable
+        uses: actions/download-artifact@v3
+        with:
+          name: releasebuild   
+      - name: Create Release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "${{ github.event.pull_request.title }}"
+          prerelease: false
+          files: |
+            react-pywebview-boilerplate
