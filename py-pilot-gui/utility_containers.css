@@ -1,18 +1,17 @@
 Static {
-    content-align: center middle;
-    background: black;
-    border: solid darkred;
-    height: 1fr;
+    content-align: center middle;  /* Align content in the center vertically and horizontally */
+    background: black;  /* Set the background color to black */
+    border: solid darkred;  /* Set a solid border with a dark red color */
+    height: 1fr;  /* Set the height to occupy one fraction of the available space */
 }
 
 .column {
-    width: 1fr;
+    width: 1fr;  /* Set the width to occupy one fraction of the available space */
 }
 
 .progress-bar {
-    transition: relative;
-    width: 100%;
-    border: solid violet;
-    background: black;
-  }
-
+    transition: relative;  /* Enable smooth transition effects */
+    width: 100%;  /* Set the width to occupy 100% of the available space */
+    border: solid violet;  /* Set a solid border with a violet color */
+    background: black;  /* Set the background color to black */
+}
