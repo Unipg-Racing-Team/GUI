@@ -1,21 +1,22 @@
 import pygame
 import sys
+import random
 
 # Inizializza pygame
 pygame.init()
 
-# Definizione dei colori utilizzati nell'interfaccia
+# Colori
 NERO = (0, 0, 0)
 GRIGIO = (100, 100, 100)
 BIANCO = (255, 255, 255)
 VERDE = (0, 255, 0)
 ROSSO = (200, 0, 0)
 
-# Dimensioni della finestra
+# Dimensioni schermo
 LARGHEZZA = 800
 ALTEZZA = 600
 
-# Impostazione della finestra di visualizzazione
+# Crea la finestra
 screen = pygame.display.set_mode((LARGHEZZA, ALTEZZA))
 pygame.display.set_caption("Interfaccia Pilota")
 
@@ -58,7 +59,26 @@ def disegna_spia(posizione, attivo):
     pygame.draw.circle(screen, BIANCO, posizione, 15, 1)
 
 
-# Valori iniziali per l'interfaccia
+# Funzione per aggiornare i valori in modo dinamico
+def aggiorna_valori():
+    global valore_velocita, valore_accell, valore_freno, valori_barre
+
+    # Incremento casuale della velocità
+    velocita_attuale = int(valore_velocita.split(" ")[0])
+    velocita_aggiornata = min(max(velocita_attuale + random.randint(-2, 2), 0), 250)
+    valore_velocita = f"{velocita_aggiornata} km/h"
+
+    # Incrementa o decrementa casualmente l'accelerazione e il freno
+    valore_accell = min(max(valore_accell + random.randint(-5, 5), 0), 100)
+    valore_freno = min(max(valore_freno + random.randint(-5, 5), 0), 100)
+
+    # Aggiorna anche i valori delle barre in modo dinamico
+    for i in range(len(valori_barre)):
+        testo, valore, max_valore = valori_barre[i]
+        nuovo_valore = min(max(valore + random.randint(-5, 5), 0), max_valore)
+        valori_barre[i] = (testo, nuovo_valore, max_valore)
+
+
 valore_velocita = "120 km/h"
 valore_accell = 50
 valore_freno = 75
@@ -80,15 +100,15 @@ while running:
     # Colorazione dello sfondo
     screen.fill(NERO)
 
-    # Visualizzazione della velocità e della spia
-    mostra_testo(valore_velocita, (LARGHEZZA // 2, ALTEZZA // 8), 70, BIANCO)
-    disegna_spia((LARGHEZZA // 2, ALTEZZA // 8 + 100), spia_attiva)
+    # Aggiorna i valori per rendere l'interfaccia dinamica
+    aggiorna_valori()
 
-    # Visualizzazione dei cerchi delle percentuali
+    # Disegna l'interfaccia
+    mostra_testo(valore_velocita, (LARGHEZZA // 2, ALTEZZA // 8), 70, BIANCO)
+    disegna_spia((LARGHEZZA // 2, ALTEZZA // 8 + 130), spia_attiva)
     disegna_cerchio((LARGHEZZA // 2 - 220, ALTEZZA // 2 + 20), valore_accell)
     disegna_cerchio((LARGHEZZA // 2 + 220, ALTEZZA // 2 + 20), valore_freno)
 
-    # Visualizzazione delle barre progressiva
     spazio = 50
     larghezza_barra = 200
     pos_y = ALTEZZA - 80
@@ -99,6 +119,8 @@ while running:
 
     # Aggiornamento della visualizzazione
     pygame.display.flip()
+
+    pygame.time.wait(100)  # Attendere 100ms prima di aggiornare di nuovo
 
 # Uscita dal programma
 pygame.quit()
