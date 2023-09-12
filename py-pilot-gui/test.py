@@ -14,11 +14,12 @@ ROSSO = (200, 0, 0)
 
 # Dimensioni schermo
 LARGHEZZA = 800
-ALTEZZA = 600
+ALTEZZA = 480
 
 # Crea la finestra
-screen = pygame.display.set_mode((LARGHEZZA, ALTEZZA))
+screen = pygame.display.set_mode((LARGHEZZA, ALTEZZA), pygame.FULLSCREEN)
 pygame.display.set_caption("Interfaccia Pilota")
+pygame.mouse.set_visible(False)
 
 
 # Funzione per mostrare il testo nella finestra
@@ -97,6 +98,8 @@ while running:
     # Gestione degli eventi
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
             running = False
 
     # Colorazione dello sfondo
