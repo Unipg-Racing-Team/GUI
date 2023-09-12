@@ -45,8 +45,10 @@ def disegna_barra(posizione, valore, max_valore, soglia=30, larghezza=200, altez
 def disegna_cerchio(posizione, percentuale):
     colore = GRIGIO
     superficie_temp = pygame.Surface((160, 160), pygame.SRCALPHA)
+    inizio_angolo = 3.14 * 2 - (percentuale / 100 * 3.14 * 2)
+    fine_angolo = 3.14 * 2
     pygame.draw.arc(
-        superficie_temp, colore, (0, 0, 160, 160), 0, percentuale / 100 * 3.14 * 2, 6
+        superficie_temp, colore, (0, 0, 160, 160), inizio_angolo, fine_angolo, 6
     )
     screen.blit(superficie_temp, (posizione[0] - 80, posizione[1] - 80))
     mostra_testo(f"{percentuale}%", posizione, 40, BIANCO)
